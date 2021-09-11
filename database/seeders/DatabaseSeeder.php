@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\TimeTrack\TimeTrack;
+use App\Models\TimeTrack\TimeTrackType;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Artisan::call('passport:install');
+        TimeTrackType::factory(10)->create();
+        User::factory(10)
+            ->has(TimeTrack::factory()->count(3), 'timeTracks')
+            ->create();
+        // TimeTrack::factory(10)->create();
     }
 }

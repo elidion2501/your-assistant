@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\v1\TimeTrackApiController;
+use App\Http\Controllers\Api\v1\Auth\AuthApiController;
+use App\Http\Controllers\Api\v1\TimeTrack\TimeTrackApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::prefix('auth')->group(function () {
+    Route::post('/signUp', [AuthApiController::class, 'signUp']);
+    Route::post('/login', [AuthApiController::class, 'login']);
+});
+Route::middleware(['auth:api'])->group(function () {
+
+    Route::get('/auth/user', [AuthApiController::class, 'authenticatedUserDetails']);
 
     Route::apiResource('TimeTrack', TimeTrackApiController::class)->scoped([
         'TimeTrack' => 'slug',
     ]);
+    
 });

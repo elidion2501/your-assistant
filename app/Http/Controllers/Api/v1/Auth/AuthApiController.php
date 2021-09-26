@@ -7,10 +7,20 @@ use App\Http\Requests\Auth\SignUpRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * 
+ * @group AUTH
+ * 
+ * @unauthenticated
+ */
 class AuthApiController extends Controller
 {
     /**
-     * handle user registration request
+     * POST sign up
+     * 
+     * @bodyParam email email required Email. Example:99999999@9999.99
+     * @bodyParam password string required Password. Example:test1234
+     * @bodyParam password_confirmation string required Password confirm. Example:test1234
      */
     public function signUp(SignUpRequest $request)
     {
@@ -22,7 +32,10 @@ class AuthApiController extends Controller
     }
 
     /**
-     * login user to our application
+     * POST sign in
+     * 
+     * @bodyParam email string required Email. Example:woodrow.rolfson@example.com
+     * @bodyParam password string required Password. Example:test1
      */
     public function login(Request $request)
     {
@@ -31,22 +44,12 @@ class AuthApiController extends Controller
             'password' => 'required'
         ]);
         if (!auth()->attempt($data)) {
-            return response(['error_message' => 'Incorrect Details. 
-            Please try again']);
+            return response()->error(['email' => 'Incorrect Details. Please try again'], 401);
         }
 
         $token = auth()->user()->createToken('API Token')->accessToken;
 
-        return response(['user' => auth()->user(), 'token' => $token]);
+        return response()->success(['token' => $token]);
     }
 
-
-    /**
-     * This method returns authenticated user details
-     */
-    public function authenticatedUserDetails()
-    {
-        //returns details
-        return response()->json(['authenticated-user' => auth()->user()], 200);
-    }
 }

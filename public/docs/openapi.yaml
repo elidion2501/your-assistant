@@ -1,0 +1,655 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/auth/signUp:
+    post:
+      summary: 'POST sign up'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJiOTYwYzdmNGQ4YjE2MmNmNzNlOGU1MjEyZDNlOGE2Y2MzM2I3MTcwZDQzOGEwN2MwOWNlNWU2YTVmMzM0ODk0ZmRkMzc5N2QyZjVhNzIwYSIsImlhdCI6MTYzMjY3NzQzMC4wNTE2NjgsIm5iZiI6MTYzMjY3NzQzMC4wNTE2NzIsImV4cCI6MTY0ODMxNTgyOS44NDQyNjIsInN1YiI6IjkiLCJzY29wZXMiOltdfQ.ibWisRgacRs4L3Nt8GGoeAmhgv46NvPwuCQppBw4n1cHwR4sWXfTJfE9tjzRa9phgCXsYd7htmdLNMEnn3IjMrF1imwCiUHIQJRcNarp2H2pbgoZPX1jBtBA87ROjsTuTUysyCKM8NEKyWGKX10SjICkTB8LRFKroA1r4dCgVjEFZXWW6sX4HzFw-H0fNt0rd4FX0frZC4fCxX0RDSjYuBjSuOadGAibCMUk1iR51MShoYjXtLUvCfjC9kLZ60D6lIpBKaAA6FLroNKUr201ey0d3NvFEkXIS_QYWTzPgaDKKE88X5sWh6vc4gtpOttFdGKuF1XrOa5WRwpbdLnJDwj2IDmC3tLBpUY-en3Ch-MPKTSwhwrnPp-EbHsCgEGOhuD0gn4LyBwfvpGN6JuP7TG7wkA8c2KsY4HDORbj7wwIZXNKbKyGb6QUapnRY7EuB4vMSRGDNutS41bde_RYKGnixqZEcFDmzlPquPVZcq1lPR1wfmrpQx5saNLHAazAlS935pAz82aqYSMBww4i0FFV54JoRyJvrwn9W0-R7xb8NuOPpvpAABoCVy_jrMMC3bQh_jJP_nUIPXUkJaOeVlQQD5iKYo9xxTnnw7P0Cg8J9XtNb-jemtIlWKkL8lx7eFUTDFDLHwXrlV4S7DlGB6r2BvMeXMg5VgKngQrGpEU
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJiOTYwYzdmNGQ4YjE2MmNmNzNlOGU1MjEyZDNlOGE2Y2MzM2I3MTcwZDQzOGEwN2MwOWNlNWU2YTVmMzM0ODk0ZmRkMzc5N2QyZjVhNzIwYSIsImlhdCI6MTYzMjY3NzQzMC4wNTE2NjgsIm5iZiI6MTYzMjY3NzQzMC4wNTE2NzIsImV4cCI6MTY0ODMxNTgyOS44NDQyNjIsInN1YiI6IjkiLCJzY29wZXMiOltdfQ.ibWisRgacRs4L3Nt8GGoeAmhgv46NvPwuCQppBw4n1cHwR4sWXfTJfE9tjzRa9phgCXsYd7htmdLNMEnn3IjMrF1imwCiUHIQJRcNarp2H2pbgoZPX1jBtBA87ROjsTuTUysyCKM8NEKyWGKX10SjICkTB8LRFKroA1r4dCgVjEFZXWW6sX4HzFw-H0fNt0rd4FX0frZC4fCxX0RDSjYuBjSuOadGAibCMUk1iR51MShoYjXtLUvCfjC9kLZ60D6lIpBKaAA6FLroNKUr201ey0d3NvFEkXIS_QYWTzPgaDKKE88X5sWh6vc4gtpOttFdGKuF1XrOa5WRwpbdLnJDwj2IDmC3tLBpUY-en3Ch-MPKTSwhwrnPp-EbHsCgEGOhuD0gn4LyBwfvpGN6JuP7TG7wkA8c2KsY4HDORbj7wwIZXNKbKyGb6QUapnRY7EuB4vMSRGDNutS41bde_RYKGnixqZEcFDmzlPquPVZcq1lPR1wfmrpQx5saNLHAazAlS935pAz82aqYSMBww4i0FFV54JoRyJvrwn9W0-R7xb8NuOPpvpAABoCVy_jrMMC3bQh_jJP_nUIPXUkJaOeVlQQD5iKYo9xxTnnw7P0Cg8J9XtNb-jemtIlWKkL8lx7eFUTDFDLHwXrlV4S7DlGB6r2BvMeXMg5VgKngQrGpEU
+      tags:
+        - AUTH
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  description: ''
+                  example: et
+                email:
+                  type: email
+                  description: Email.
+                  example: 99999999@9999.99
+                password:
+                  type: string
+                  description: Password.
+                  example: test1234
+                password_confirmation:
+                  type: string
+                  description: 'Password confirm.'
+                  example: test1234
+              required:
+                - nickname
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/auth/login:
+    post:
+      summary: 'POST sign in'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJlYTdhYWI1MmMyZmM3Yzc2NWE4OWRkMDkwYjFiZjY0MDc1ZjNkOTJiNDhjMGZlMzdiYmMyZWYwMmJmZmM4NDlmMDIwMWJjMjBlYzNjYTlmZSIsImlhdCI6MTYzMjY3NzQzMC4yMjc1MTksIm5iZiI6MTYzMjY3NzQzMC4yMjc1MjEsImV4cCI6MTY0ODMxNTgzMC4wMjA1NzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.i6PuZcHpVE9rplC1Pxr84M7kN1oXdheBn_ScHUQL9T9SqxwkqpG1AmB1qz2n5oEH7Ubwzf_koHlUba9UGFT7r0Qs8P9UgRkL3Tx80CMiLX6irOYBCKpxouqD_30qDdZurxM_IOAh0jcEBxGBRpiEROO5ah_qfGnnS711n_xDXRgcqPDMIt4LeSOkkUZDbxOIRxyIcf8M3lMQvQL1jfVOGJLMJUGgTIXuWzCdsm11Am-APTNKKMfp_QWZj0VVwBdbc19P5H61GW7amhShjz0SjOwPqp77zO-_Y_RwexPEXYFNEbhdLi5ZWa93yya03MsU8lfP9T29uEIM3kLoyzKs3ZAX7vl-lbleIzX3uhdIVl3r7F637XibX-fH2MUyIY0KzPZ6mLByOzei6YcvdQ_tnyXdr_sLByTBT_UhKyUquvcOIn7eQFcF-ME_eSmFiGTAM1fs8YR_c995L71JSs8nNfQsZFlscqt26qwAHT6xfA-ocNRXSayFbU14oLUXNQ1m6q9xstBoaIU_oBcJkVpXT85vvUDwWvldmAO2T1jo7l944aY1PHgWguUOAnETPED-frxePPpizkm6BiGw1rLmvS-6hWFA33fmU-IMTinZ9Okg_tOvj1Fh1t_XDLDylvfszBxOe5jy1fL2O-I0DQ1KLMV05JRgGM1zjikflIiaHis
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJlYTdhYWI1MmMyZmM3Yzc2NWE4OWRkMDkwYjFiZjY0MDc1ZjNkOTJiNDhjMGZlMzdiYmMyZWYwMmJmZmM4NDlmMDIwMWJjMjBlYzNjYTlmZSIsImlhdCI6MTYzMjY3NzQzMC4yMjc1MTksIm5iZiI6MTYzMjY3NzQzMC4yMjc1MjEsImV4cCI6MTY0ODMxNTgzMC4wMjA1NzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.i6PuZcHpVE9rplC1Pxr84M7kN1oXdheBn_ScHUQL9T9SqxwkqpG1AmB1qz2n5oEH7Ubwzf_koHlUba9UGFT7r0Qs8P9UgRkL3Tx80CMiLX6irOYBCKpxouqD_30qDdZurxM_IOAh0jcEBxGBRpiEROO5ah_qfGnnS711n_xDXRgcqPDMIt4LeSOkkUZDbxOIRxyIcf8M3lMQvQL1jfVOGJLMJUGgTIXuWzCdsm11Am-APTNKKMfp_QWZj0VVwBdbc19P5H61GW7amhShjz0SjOwPqp77zO-_Y_RwexPEXYFNEbhdLi5ZWa93yya03MsU8lfP9T29uEIM3kLoyzKs3ZAX7vl-lbleIzX3uhdIVl3r7F637XibX-fH2MUyIY0KzPZ6mLByOzei6YcvdQ_tnyXdr_sLByTBT_UhKyUquvcOIn7eQFcF-ME_eSmFiGTAM1fs8YR_c995L71JSs8nNfQsZFlscqt26qwAHT6xfA-ocNRXSayFbU14oLUXNQ1m6q9xstBoaIU_oBcJkVpXT85vvUDwWvldmAO2T1jo7l944aY1PHgWguUOAnETPED-frxePPpizkm6BiGw1rLmvS-6hWFA33fmU-IMTinZ9Okg_tOvj1Fh1t_XDLDylvfszBxOe5jy1fL2O-I0DQ1KLMV05JRgGM1zjikflIiaHis
+      tags:
+        - AUTH
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email.
+                  example: woodrow.rolfson@example.com
+                password:
+                  type: string
+                  description: Password.
+                  example: test1
+              required:
+                - email
+                - password
+      security: []
+  '/api/TimeTrack/{slug}':
+    get:
+      summary: 'GET show Time Track'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    id: 1
+                    description: 'Lizard''s slate-pencil, and the others took the thimble, looking as solemn as she could, for the baby, it was indeed: she was walking.'
+                    time_from: '2021-09-08T04:14:20.000000Z'
+                    time_to: '2021-09-19T01:16:10.000000Z'
+                    slug: '2333'
+                    user_slug: dr-carter-frami
+                    user_name: 'Dr. Carter Frami'
+                    time_track_type_id: 7
+                    time_track_type_name: 'Violet Armstrong DVM'
+                    time_track_type_slug: violet-armstrong-dvm
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      description: 'Lizard''s slate-pencil, and the others took the thimble, looking as solemn as she could, for the baby, it was indeed: she was walking.'
+                      time_from: '2021-09-08T04:14:20.000000Z'
+                      time_to: '2021-09-19T01:16:10.000000Z'
+                      slug: '2333'
+                      user_slug: dr-carter-frami
+                      user_name: 'Dr. Carter Frami'
+                      time_track_type_id: 7
+                      time_track_type_name: 'Violet Armstrong DVM'
+                      time_track_type_slug: violet-armstrong-dvm
+      tags:
+        - 'Time Tracks'
+    put:
+      summary: 'PUT/PATCH update Time Track'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    id: 1
+                    description: sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh
+                    time_from: '2019-09-25T15:10:38.000000Z'
+                    time_to: '2019-10-25T15:10:38.000000Z'
+                    slug: 2019-09-25-151038
+                    user_slug: dr-carter-frami
+                    user_name: 'Dr. Carter Frami'
+                    time_track_type_id: 7
+                    time_track_type_name: 'Violet Armstrong DVM'
+                    time_track_type_slug: violet-armstrong-dvm
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      description: sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh
+                      time_from: '2019-09-25T15:10:38.000000Z'
+                      time_to: '2019-10-25T15:10:38.000000Z'
+                      slug: 2019-09-25-151038
+                      user_slug: dr-carter-frami
+                      user_name: 'Dr. Carter Frami'
+                      time_track_type_id: 7
+                      time_track_type_name: 'Violet Armstrong DVM'
+                      time_track_type_slug: violet-armstrong-dvm
+      tags:
+        - 'Time Tracks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 1500 characters.'
+                  example: sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh
+                time_from:
+                  type: date
+                  description: 'Time from'
+                  example: '2019-09-25 15:10:38'
+                time_to:
+                  type: date
+                  description: 'Time to.'
+                  example: '2019-10-25 15:10:38'
+                time_track_type_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - time_from
+                - time_to
+    delete:
+      summary: 'DELETE delete TimeTrack'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Time Tracks'
+    parameters:
+      -
+        in: path
+        name: slug
+        description: 'The ID of the post.'
+        example: '2333'
+        required: true
+        schema:
+          type: string
+  /api/TimeTrackType:
+    get:
+      summary: 'GET Time Track Types'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    -
+                      id: 1
+                      slug: prof-iliana-haag-jr
+                      type_name: 'Prof. Iliana Haag Jr.'
+                    -
+                      id: 2
+                      slug: garrick-dibbert
+                      type_name: 'Garrick Dibbert'
+                    -
+                      id: 3
+                      slug: quinton-bogisich
+                      type_name: 'Quinton Bogisich'
+                    -
+                      id: 4
+                      slug: mr-lavon-fadel
+                      type_name: 'Mr. Lavon Fadel'
+                    -
+                      id: 5
+                      slug: tyreek-murphy
+                      type_name: 'Tyreek Murphy'
+                    -
+                      id: 6
+                      slug: dylan-bauch
+                      type_name: 'Dylan Bauch'
+                    -
+                      id: 7
+                      slug: violet-armstrong-dvm
+                      type_name: 'Violet Armstrong DVM'
+                    -
+                      id: 8
+                      slug: brennon-huel-v
+                      type_name: 'Brennon Huel V'
+                    -
+                      id: 9
+                      slug: kelsi-cronin-phd
+                      type_name: 'Kelsi Cronin PhD'
+                    -
+                      id: 10
+                      slug: martina-toy
+                      type_name: 'Martina Toy'
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        slug: prof-iliana-haag-jr
+                        type_name: 'Prof. Iliana Haag Jr.'
+                      -
+                        id: 2
+                        slug: garrick-dibbert
+                        type_name: 'Garrick Dibbert'
+                      -
+                        id: 3
+                        slug: quinton-bogisich
+                        type_name: 'Quinton Bogisich'
+                      -
+                        id: 4
+                        slug: mr-lavon-fadel
+                        type_name: 'Mr. Lavon Fadel'
+                      -
+                        id: 5
+                        slug: tyreek-murphy
+                        type_name: 'Tyreek Murphy'
+                      -
+                        id: 6
+                        slug: dylan-bauch
+                        type_name: 'Dylan Bauch'
+                      -
+                        id: 7
+                        slug: violet-armstrong-dvm
+                        type_name: 'Violet Armstrong DVM'
+                      -
+                        id: 8
+                        slug: brennon-huel-v
+                        type_name: 'Brennon Huel V'
+                      -
+                        id: 9
+                        slug: kelsi-cronin-phd
+                        type_name: 'Kelsi Cronin PhD'
+                      -
+                        id: 10
+                        slug: martina-toy
+                        type_name: 'Martina Toy'
+                    items:
+                      type: object
+      tags:
+        - 'Time Tracks'
+  /api/TimeTrack:
+    get:
+      summary: 'GET Time Tracks'
+      description: 'Get Time Tracks list with pagination'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    total: 55
+                    current_page: 1
+                    data:
+                      -
+                        id: 9
+                        description: 'Alice asked in a great crowd assembled about them--all sorts of things--I can''t remember things as I get it home?'' when it had.'
+                        time_from: '2021-09-10T08:55:06.000000Z'
+                        time_to: '2021-09-16T07:12:35.000000Z'
+                        slug: 2021-09-10-085506
+                        user_slug: dr-carter-frami
+                        user_name: 'Dr. Carter Frami'
+                        time_track_type_id: 1
+                        time_track_type_name: 'Prof. Iliana Haag Jr.'
+                        time_track_type_slug: prof-iliana-haag-jr
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      total: 55
+                      current_page: 1
+                      data:
+                        -
+                          id: 9
+                          description: 'Alice asked in a great crowd assembled about them--all sorts of things--I can''t remember things as I get it home?'' when it had.'
+                          time_from: '2021-09-10T08:55:06.000000Z'
+                          time_to: '2021-09-16T07:12:35.000000Z'
+                          slug: 2021-09-10-085506
+                          user_slug: dr-carter-frami
+                          user_name: 'Dr. Carter Frami'
+                          time_track_type_id: 1
+                          time_track_type_name: 'Prof. Iliana Haag Jr.'
+                          time_track_type_slug: prof-iliana-haag-jr
+      tags:
+        - 'Time Tracks'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                perPage:
+                  type: integer
+                  description: 'Items per page.'
+                  example: 1
+                orderBy:
+                  type: string
+                  description: 'Order by which field.'
+                  example: time_from
+                ordering:
+                  type: string
+                  description: 'ORder ASC or DESC.'
+                  example: DESC
+    post:
+      summary: 'POST create Time Track'
+      description: 'Store a newly created resource in storage.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: '200'
+                  data:
+                    id: 208
+                    description: arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw
+                    time_from: '2021-09-25T15:10:38.000000Z'
+                    time_to: '2021-10-25T15:10:38.000000Z'
+                    slug: 2021-09-25-151038
+                    user_slug: dr-carter-frami
+                    user_name: 'Dr. Carter Frami'
+                    time_track_type_id: 3
+                    time_track_type_name: 'Quinton Bogisich'
+                    time_track_type_slug: quinton-bogisich
+                properties:
+                  code:
+                    type: string
+                    example: '200'
+                  data:
+                    type: object
+                    example:
+                      id: 208
+                      description: arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw
+                      time_from: '2021-09-25T15:10:38.000000Z'
+                      time_to: '2021-10-25T15:10:38.000000Z'
+                      slug: 2021-09-25-151038
+                      user_slug: dr-carter-frami
+                      user_name: 'Dr. Carter Frami'
+                      time_track_type_id: 3
+                      time_track_type_name: 'Quinton Bogisich'
+                      time_track_type_slug: quinton-bogisich
+      tags:
+        - 'Time Tracks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 1500 characters.'
+                  example: arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw
+                time_from:
+                  type: date
+                  description: 'Time from'
+                  example: '2021-09-25 15:10:38'
+                time_to:
+                  type: date
+                  description: 'Time to.'
+                  example: '2021-10-25 15:10:38'
+                time_track_type_id:
+                  type: integer
+                  description: 'ID type of TIme Track.'
+                  example: 3
+              required:
+                - time_from
+                - time_to
+                - time_track_type_id
+tags:
+  -
+    name: AUTH
+    description: ''
+  -
+    name: 'Time Tracks'
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

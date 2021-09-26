@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         Artisan::call('passport:install');
         TimeTrackType::factory(10)->create();
-        User::factory(10)
-            ->has(TimeTrack::factory()->count(3), 'timeTracks')
+        User::factory(1)
+            ->has(TimeTrack::factory()->count(55), 'timeTracks')
             ->create();
         // TimeTrack::factory(10)->create();
     }

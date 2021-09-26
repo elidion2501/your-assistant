@@ -2,6 +2,7 @@
 
 namespace App\Repositories\TimeTrack;
 
+use App\Http\Resources\TimeTrack\TimeTrackCollection;
 use App\Models\TimeTrack\TimeTrack;
 use App\Services\MainService;
 
@@ -12,12 +13,10 @@ class TimeTrackRepository
 {
     public function getTimeTracksWithPaginate($user_id, $perPage, $orderBy, $ordering)
     {
-        $mainService = new MainService;
         $timeTracks = TimeTrack::where('user_id', $user_id)
-        ->orderBy($orderBy, $ordering)
-        ->paginate($perPage);
-
-        $timeTracks = $mainService->generatePaginationFormat($timeTracks->toArray());
+            ->with(['user:id,slug,nickname', 'timeTrackType:id,type_name,slug'])
+            ->orderBy($orderBy, $ordering)
+            ->paginate($perPage);
 
         return $timeTracks;
     }

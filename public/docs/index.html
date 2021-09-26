@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+    <script src="../docs/js/theme-default-3.11.1.js"></script>
+
+    <link rel="stylesheet"
+          href="//unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script>
+        var baseUrl = "http://127.0.0.1:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.11.1.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: September 26 2021</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://127.0.0.1:8000</code></pre>
+
+        <h1>Authenticating requests</h1>
+<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+
+        <h1 id="auth">AUTH</h1>
+
+    
+
+            <h2 id="auth-POSTapi-auth-signUp">POST sign up</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-auth-signUp">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/auth/signUp" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"nickname\": \"et\",
+    \"email\": \"99999999@9999.99\",
+    \"password\": \"test1234\",
+    \"password_confirmation\": \"test1234\"
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/auth/signUp"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "nickname": "et",
+    "email": "99999999@9999.99",
+    "password": "test1234",
+    "password_confirmation": "test1234"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-auth-signUp">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJiOTYwYzdmNGQ4YjE2MmNmNzNlOGU1MjEyZDNlOGE2Y2MzM2I3MTcwZDQzOGEwN2MwOWNlNWU2YTVmMzM0ODk0ZmRkMzc5N2QyZjVhNzIwYSIsImlhdCI6MTYzMjY3NzQzMC4wNTE2NjgsIm5iZiI6MTYzMjY3NzQzMC4wNTE2NzIsImV4cCI6MTY0ODMxNTgyOS44NDQyNjIsInN1YiI6IjkiLCJzY29wZXMiOltdfQ.ibWisRgacRs4L3Nt8GGoeAmhgv46NvPwuCQppBw4n1cHwR4sWXfTJfE9tjzRa9phgCXsYd7htmdLNMEnn3IjMrF1imwCiUHIQJRcNarp2H2pbgoZPX1jBtBA87ROjsTuTUysyCKM8NEKyWGKX10SjICkTB8LRFKroA1r4dCgVjEFZXWW6sX4HzFw-H0fNt0rd4FX0frZC4fCxX0RDSjYuBjSuOadGAibCMUk1iR51MShoYjXtLUvCfjC9kLZ60D6lIpBKaAA6FLroNKUr201ey0d3NvFEkXIS_QYWTzPgaDKKE88X5sWh6vc4gtpOttFdGKuF1XrOa5WRwpbdLnJDwj2IDmC3tLBpUY-en3Ch-MPKTSwhwrnPp-EbHsCgEGOhuD0gn4LyBwfvpGN6JuP7TG7wkA8c2KsY4HDORbj7wwIZXNKbKyGb6QUapnRY7EuB4vMSRGDNutS41bde_RYKGnixqZEcFDmzlPquPVZcq1lPR1wfmrpQx5saNLHAazAlS935pAz82aqYSMBww4i0FFV54JoRyJvrwn9W0-R7xb8NuOPpvpAABoCVy_jrMMC3bQh_jJP_nUIPXUkJaOeVlQQD5iKYo9xxTnnw7P0Cg8J9XtNb-jemtIlWKkL8lx7eFUTDFDLHwXrlV4S7DlGB6r2BvMeXMg5VgKngQrGpEU&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-signUp" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-signUp"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-signUp"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-signUp" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-signUp"></code></pre>
+</span>
+<form id="form-POSTapi-auth-signUp" data-method="POST"
+      data-path="api/auth/signUp"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-signUp', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-signUp"
+                    onclick="tryItOut('POSTapi-auth-signUp');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-signUp"
+                    onclick="cancelTryOut('POSTapi-auth-signUp');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-signUp" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/signUp</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>nickname</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="nickname"
+               data-endpoint="POSTapi-auth-signUp"
+               data-component="body" required  hidden>
+    <br>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-auth-signUp"
+               data-component="body" required  hidden>
+    <br>
+<p>Email.</p>        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-auth-signUp"
+               data-component="body" required  hidden>
+    <br>
+<p>Password.</p>        </p>
+                <p>
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password_confirmation"
+               data-endpoint="POSTapi-auth-signUp"
+               data-component="body" required  hidden>
+    <br>
+<p>Password confirm.</p>        </p>
+    
+    </form>
+
+            <h2 id="auth-POSTapi-auth-login">POST sign in</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"woodrow.rolfson@example.com\",
+    \"password\": \"test1\"
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "woodrow.rolfson@example.com",
+    "password": "test1"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-auth-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJlYTdhYWI1MmMyZmM3Yzc2NWE4OWRkMDkwYjFiZjY0MDc1ZjNkOTJiNDhjMGZlMzdiYmMyZWYwMmJmZmM4NDlmMDIwMWJjMjBlYzNjYTlmZSIsImlhdCI6MTYzMjY3NzQzMC4yMjc1MTksIm5iZiI6MTYzMjY3NzQzMC4yMjc1MjEsImV4cCI6MTY0ODMxNTgzMC4wMjA1NzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.i6PuZcHpVE9rplC1Pxr84M7kN1oXdheBn_ScHUQL9T9SqxwkqpG1AmB1qz2n5oEH7Ubwzf_koHlUba9UGFT7r0Qs8P9UgRkL3Tx80CMiLX6irOYBCKpxouqD_30qDdZurxM_IOAh0jcEBxGBRpiEROO5ah_qfGnnS711n_xDXRgcqPDMIt4LeSOkkUZDbxOIRxyIcf8M3lMQvQL1jfVOGJLMJUGgTIXuWzCdsm11Am-APTNKKMfp_QWZj0VVwBdbc19P5H61GW7amhShjz0SjOwPqp77zO-_Y_RwexPEXYFNEbhdLi5ZWa93yya03MsU8lfP9T29uEIM3kLoyzKs3ZAX7vl-lbleIzX3uhdIVl3r7F637XibX-fH2MUyIY0KzPZ6mLByOzei6YcvdQ_tnyXdr_sLByTBT_UhKyUquvcOIn7eQFcF-ME_eSmFiGTAM1fs8YR_c995L71JSs8nNfQsZFlscqt26qwAHT6xfA-ocNRXSayFbU14oLUXNQ1m6q9xstBoaIU_oBcJkVpXT85vvUDwWvldmAO2T1jo7l944aY1PHgWguUOAnETPED-frxePPpizkm6BiGw1rLmvS-6hWFA33fmU-IMTinZ9Okg_tOvj1Fh1t_XDLDylvfszBxOe5jy1fL2O-I0DQ1KLMV05JRgGM1zjikflIiaHis&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-login"></code></pre>
+</span>
+<span id="execution-error-POSTapi-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-auth-login"></code></pre>
+</span>
+<form id="form-POSTapi-auth-login" data-method="POST"
+      data-path="api/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-auth-login"
+                    onclick="tryItOut('POSTapi-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-auth-login"
+                    onclick="cancelTryOut('POSTapi-auth-login');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-auth-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/auth/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTapi-auth-login"
+               data-component="body" required  hidden>
+    <br>
+<p>Email.</p>        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-auth-login"
+               data-component="body" required  hidden>
+    <br>
+<p>Password.</p>        </p>
+    
+    </form>
+
+        <h1 id="time-tracks">Time Tracks</h1>
+
+    
+
+            <h2 id="time-tracks-GETapi-TimeTrack--slug-">GET show Time Track</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-TimeTrack--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/TimeTrack/2333" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrack/2333"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-TimeTrack--slug-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 52
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;description&quot;: &quot;Lizard's slate-pencil, and the others took the thimble, looking as solemn as she could, for the baby, it was indeed: she was walking.&quot;,
+        &quot;time_from&quot;: &quot;2021-09-08T04:14:20.000000Z&quot;,
+        &quot;time_to&quot;: &quot;2021-09-19T01:16:10.000000Z&quot;,
+        &quot;slug&quot;: &quot;2333&quot;,
+        &quot;user_slug&quot;: &quot;dr-carter-frami&quot;,
+        &quot;user_name&quot;: &quot;Dr. Carter Frami&quot;,
+        &quot;time_track_type_id&quot;: 7,
+        &quot;time_track_type_name&quot;: &quot;Violet Armstrong DVM&quot;,
+        &quot;time_track_type_slug&quot;: &quot;violet-armstrong-dvm&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-TimeTrack--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-TimeTrack--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-TimeTrack--slug-"></code></pre>
+</span>
+<span id="execution-error-GETapi-TimeTrack--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-TimeTrack--slug-"></code></pre>
+</span>
+<form id="form-GETapi-TimeTrack--slug-" data-method="GET"
+      data-path="api/TimeTrack/{slug}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-TimeTrack--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-TimeTrack--slug-"
+                    onclick="tryItOut('GETapi-TimeTrack--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-TimeTrack--slug-"
+                    onclick="cancelTryOut('GETapi-TimeTrack--slug-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-TimeTrack--slug-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/TimeTrack/{slug}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-TimeTrack--slug-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-TimeTrack--slug-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>slug</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="slug"
+               data-endpoint="GETapi-TimeTrack--slug-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the post.</p>            </p>
+                    </form>
+
+            <h2 id="time-tracks-GETapi-TimeTrackType">GET Time Track Types</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-TimeTrackType">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/TimeTrackType" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrackType"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-TimeTrackType">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 50
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;slug&quot;: &quot;prof-iliana-haag-jr&quot;,
+            &quot;type_name&quot;: &quot;Prof. Iliana Haag Jr.&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;slug&quot;: &quot;garrick-dibbert&quot;,
+            &quot;type_name&quot;: &quot;Garrick Dibbert&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;slug&quot;: &quot;quinton-bogisich&quot;,
+            &quot;type_name&quot;: &quot;Quinton Bogisich&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;slug&quot;: &quot;mr-lavon-fadel&quot;,
+            &quot;type_name&quot;: &quot;Mr. Lavon Fadel&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;slug&quot;: &quot;tyreek-murphy&quot;,
+            &quot;type_name&quot;: &quot;Tyreek Murphy&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;slug&quot;: &quot;dylan-bauch&quot;,
+            &quot;type_name&quot;: &quot;Dylan Bauch&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;slug&quot;: &quot;violet-armstrong-dvm&quot;,
+            &quot;type_name&quot;: &quot;Violet Armstrong DVM&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;slug&quot;: &quot;brennon-huel-v&quot;,
+            &quot;type_name&quot;: &quot;Brennon Huel V&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;slug&quot;: &quot;kelsi-cronin-phd&quot;,
+            &quot;type_name&quot;: &quot;Kelsi Cronin PhD&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;slug&quot;: &quot;martina-toy&quot;,
+            &quot;type_name&quot;: &quot;Martina Toy&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-TimeTrackType" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-TimeTrackType"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-TimeTrackType"></code></pre>
+</span>
+<span id="execution-error-GETapi-TimeTrackType" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-TimeTrackType"></code></pre>
+</span>
+<form id="form-GETapi-TimeTrackType" data-method="GET"
+      data-path="api/TimeTrackType"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-TimeTrackType', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-TimeTrackType"
+                    onclick="tryItOut('GETapi-TimeTrackType');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-TimeTrackType"
+                    onclick="cancelTryOut('GETapi-TimeTrackType');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-TimeTrackType" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/TimeTrackType</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-TimeTrackType" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-TimeTrackType"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="time-tracks-GETapi-TimeTrack">GET Time Tracks</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Get Time Tracks list with pagination</p>
+
+<span id="example-requests-GETapi-TimeTrack">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/TimeTrack" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"perPage\": 1,
+    \"orderBy\": \"time_from\",
+    \"ordering\": \"DESC\"
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrack"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "perPage": 1,
+    "orderBy": "time_from",
+    "ordering": "DESC"
+}
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-GETapi-TimeTrack">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 54
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;total&quot;: 55,
+        &quot;current_page&quot;: 1,
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 9,
+                &quot;description&quot;: &quot;Alice asked in a great crowd assembled about them--all sorts of things--I can't remember things as I get it home?' when it had.&quot;,
+                &quot;time_from&quot;: &quot;2021-09-10T08:55:06.000000Z&quot;,
+                &quot;time_to&quot;: &quot;2021-09-16T07:12:35.000000Z&quot;,
+                &quot;slug&quot;: &quot;2021-09-10-085506&quot;,
+                &quot;user_slug&quot;: &quot;dr-carter-frami&quot;,
+                &quot;user_name&quot;: &quot;Dr. Carter Frami&quot;,
+                &quot;time_track_type_id&quot;: 1,
+                &quot;time_track_type_name&quot;: &quot;Prof. Iliana Haag Jr.&quot;,
+                &quot;time_track_type_slug&quot;: &quot;prof-iliana-haag-jr&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-TimeTrack" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-TimeTrack"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-TimeTrack"></code></pre>
+</span>
+<span id="execution-error-GETapi-TimeTrack" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-TimeTrack"></code></pre>
+</span>
+<form id="form-GETapi-TimeTrack" data-method="GET"
+      data-path="api/TimeTrack"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-TimeTrack', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-TimeTrack"
+                    onclick="tryItOut('GETapi-TimeTrack');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-TimeTrack"
+                    onclick="cancelTryOut('GETapi-TimeTrack');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-TimeTrack" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/TimeTrack</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-TimeTrack" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-TimeTrack"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>perPage</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="perPage"
+               data-endpoint="GETapi-TimeTrack"
+               data-component="body"  hidden>
+    <br>
+<p>Items per page.</p>        </p>
+                <p>
+            <b><code>orderBy</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="orderBy"
+               data-endpoint="GETapi-TimeTrack"
+               data-component="body"  hidden>
+    <br>
+<p>Order by which field.</p>        </p>
+                <p>
+            <b><code>ordering</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="ordering"
+               data-endpoint="GETapi-TimeTrack"
+               data-component="body"  hidden>
+    <br>
+<p>ORder ASC or DESC.</p>        </p>
+    
+    </form>
+
+            <h2 id="time-tracks-POSTapi-TimeTrack">POST create Time Track</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Store a newly created resource in storage.</p>
+
+<span id="example-requests-POSTapi-TimeTrack">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/TimeTrack" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"description\": \"arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw\",
+    \"time_from\": \"2021-09-25 15:10:38\",
+    \"time_to\": \"2021-10-25 15:10:38\",
+    \"time_track_type_id\": 3
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrack"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "description": "arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw",
+    "time_from": "2021-09-25 15:10:38",
+    "time_to": "2021-10-25 15:10:38",
+    "time_track_type_id": 3
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-TimeTrack">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 53
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 208,
+        &quot;description&quot;: &quot;arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw&quot;,
+        &quot;time_from&quot;: &quot;2021-09-25T15:10:38.000000Z&quot;,
+        &quot;time_to&quot;: &quot;2021-10-25T15:10:38.000000Z&quot;,
+        &quot;slug&quot;: &quot;2021-09-25-151038&quot;,
+        &quot;user_slug&quot;: &quot;dr-carter-frami&quot;,
+        &quot;user_name&quot;: &quot;Dr. Carter Frami&quot;,
+        &quot;time_track_type_id&quot;: 3,
+        &quot;time_track_type_name&quot;: &quot;Quinton Bogisich&quot;,
+        &quot;time_track_type_slug&quot;: &quot;quinton-bogisich&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-TimeTrack" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-TimeTrack"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-TimeTrack"></code></pre>
+</span>
+<span id="execution-error-POSTapi-TimeTrack" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-TimeTrack"></code></pre>
+</span>
+<form id="form-POSTapi-TimeTrack" data-method="POST"
+      data-path="api/TimeTrack"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-TimeTrack', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-TimeTrack"
+                    onclick="tryItOut('POSTapi-TimeTrack');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-TimeTrack"
+                    onclick="cancelTryOut('POSTapi-TimeTrack');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-TimeTrack" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/TimeTrack</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTapi-TimeTrack" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTapi-TimeTrack"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="POSTapi-TimeTrack"
+               data-component="body"  hidden>
+    <br>
+<p>Must be at least 5 characters. Must not be greater than 1500 characters.</p>        </p>
+                <p>
+            <b><code>time_from</code></b>&nbsp;&nbsp;<small>date</small>  &nbsp;
+                <input type="text"
+               name="time_from"
+               data-endpoint="POSTapi-TimeTrack"
+               data-component="body" required  hidden>
+    <br>
+<p>Time from</p>        </p>
+                <p>
+            <b><code>time_to</code></b>&nbsp;&nbsp;<small>date</small>  &nbsp;
+                <input type="text"
+               name="time_to"
+               data-endpoint="POSTapi-TimeTrack"
+               data-component="body" required  hidden>
+    <br>
+<p>Time to.</p>        </p>
+                <p>
+            <b><code>time_track_type_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="time_track_type_id"
+               data-endpoint="POSTapi-TimeTrack"
+               data-component="body" required  hidden>
+    <br>
+<p>ID type of TIme Track.</p>        </p>
+    
+    </form>
+
+            <h2 id="time-tracks-PUTapi-TimeTrack--slug-">PUT/PATCH update Time Track</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-TimeTrack--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PUT \
+    "http://127.0.0.1:8000/api/TimeTrack/2333" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"description\": \"sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh\",
+    \"time_from\": \"2019-09-25 15:10:38\",
+    \"time_to\": \"2019-10-25 15:10:38\"
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrack/2333"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "description": "sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh",
+    "time_from": "2019-09-25 15:10:38",
+    "time_to": "2019-10-25 15:10:38"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-PUTapi-TimeTrack--slug-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 51
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;code&quot;: &quot;200&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;description&quot;: &quot;sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh&quot;,
+        &quot;time_from&quot;: &quot;2019-09-25T15:10:38.000000Z&quot;,
+        &quot;time_to&quot;: &quot;2019-10-25T15:10:38.000000Z&quot;,
+        &quot;slug&quot;: &quot;2019-09-25-151038&quot;,
+        &quot;user_slug&quot;: &quot;dr-carter-frami&quot;,
+        &quot;user_name&quot;: &quot;Dr. Carter Frami&quot;,
+        &quot;time_track_type_id&quot;: 7,
+        &quot;time_track_type_name&quot;: &quot;Violet Armstrong DVM&quot;,
+        &quot;time_track_type_slug&quot;: &quot;violet-armstrong-dvm&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTapi-TimeTrack--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-TimeTrack--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-TimeTrack--slug-"></code></pre>
+</span>
+<span id="execution-error-PUTapi-TimeTrack--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-TimeTrack--slug-"></code></pre>
+</span>
+<form id="form-PUTapi-TimeTrack--slug-" data-method="PUT"
+      data-path="api/TimeTrack/{slug}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-TimeTrack--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-TimeTrack--slug-"
+                    onclick="tryItOut('PUTapi-TimeTrack--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-TimeTrack--slug-"
+                    onclick="cancelTryOut('PUTapi-TimeTrack--slug-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-TimeTrack--slug-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/TimeTrack/{slug}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/TimeTrack/{slug}</code></b>
+        </p>
+                <p>
+            <label id="auth-PUTapi-TimeTrack--slug-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="PUTapi-TimeTrack--slug-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>slug</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="slug"
+               data-endpoint="PUTapi-TimeTrack--slug-"
+               data-component="url" required  hidden>
+    <br>
+<p>The ID of the post.</p>            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="PUTapi-TimeTrack--slug-"
+               data-component="body"  hidden>
+    <br>
+<p>Must be at least 5 characters. Must not be greater than 1500 characters.</p>        </p>
+                <p>
+            <b><code>time_from</code></b>&nbsp;&nbsp;<small>date</small>  &nbsp;
+                <input type="text"
+               name="time_from"
+               data-endpoint="PUTapi-TimeTrack--slug-"
+               data-component="body" required  hidden>
+    <br>
+<p>Time from</p>        </p>
+                <p>
+            <b><code>time_to</code></b>&nbsp;&nbsp;<small>date</small>  &nbsp;
+                <input type="text"
+               name="time_to"
+               data-endpoint="PUTapi-TimeTrack--slug-"
+               data-component="body" required  hidden>
+    <br>
+<p>Time to.</p>        </p>
+                <p>
+            <b><code>time_track_type_id</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="time_track_type_id"
+               data-endpoint="PUTapi-TimeTrack--slug-"
+               data-component="body"  hidden>
+    <br>
+        </p>
+    
+    </form>
+
+            <h2 id="time-tracks-DELETEapi-TimeTrack--slug-">DELETE delete TimeTrack</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-TimeTrack--slug-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://127.0.0.1:8000/api/TimeTrack/aliquid" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/TimeTrack/aliquid"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+</span>
+
+<span id="example-responses-DELETEapi-TimeTrack--slug-">
+</span>
+<span id="execution-results-DELETEapi-TimeTrack--slug-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-TimeTrack--slug-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-TimeTrack--slug-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-TimeTrack--slug-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-TimeTrack--slug-"></code></pre>
+</span>
+<form id="form-DELETEapi-TimeTrack--slug-" data-method="DELETE"
+      data-path="api/TimeTrack/{slug}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-TimeTrack--slug-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-TimeTrack--slug-"
+                    onclick="tryItOut('DELETEapi-TimeTrack--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-TimeTrack--slug-"
+                    onclick="cancelTryOut('DELETEapi-TimeTrack--slug-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-TimeTrack--slug-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/TimeTrack/{slug}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEapi-TimeTrack--slug-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEapi-TimeTrack--slug-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>slug</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="slug"
+               data-endpoint="DELETEapi-TimeTrack--slug-"
+               data-component="url" required  hidden>
+    <br>
+            </p>
+                    </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var exampleLanguages = ["bash","javascript"];
+        setupLanguages(exampleLanguages);
+    });
+</script>
+</body>
+</html>

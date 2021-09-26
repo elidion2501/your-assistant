@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api\v1\TimeTrack;
 
 use App\Models\TimeTrack\TimeTrack;
 use App\Models\TimeTrack\TimeTrackType;
@@ -17,7 +17,7 @@ class TimeTrackApiTest extends TestCase
     public function test_time_track_store_success()
     {
 
-        $user = User::first();
+        $user = User::factory()->create();
         $timeTrackType = TimeTrackType::first();
 
         $response =  $this->actingAs($user, 'api')->postJson('/api/TimeTrack', [
@@ -35,11 +35,16 @@ class TimeTrackApiTest extends TestCase
                 [
                     'code',
                     'data' => [
-                        'id',
                         'description',
                         'time_from',
                         'time_to',
-                        'user_id',
+                        'id',
+                        'slug',
+                        'user_name',
+                        'user_slug',
+                        'time_track_type_id',
+                        'time_track_type_name',
+                        'time_track_type_slug',
                     ]
                 ]
             );
@@ -97,7 +102,7 @@ class TimeTrackApiTest extends TestCase
 
     public function test_get_time_tracks_pagination_check_by_user_id()
     {
-        $user = User::factory(1)->create()->first();
+        $user = User::factory()->create();
 
         $response =  $this->actingAs($user, 'api')->getJson('/api/TimeTrack');
 
@@ -116,7 +121,11 @@ class TimeTrackApiTest extends TestCase
                                 'time_to',
                                 'id',
                                 'slug',
-                                'user_id'
+                                'user_name',
+                                'user_slug',
+                                'time_track_type_id',
+                                'time_track_type_name',
+                                'time_track_type_slug',
                             ],
                         ],
                         'current_page',
@@ -154,7 +163,11 @@ class TimeTrackApiTest extends TestCase
                                 'time_to',
                                 'id',
                                 'slug',
-                                'user_id'
+                                'user_name',
+                                'user_slug',
+                                'time_track_type_id',
+                                'time_track_type_name',
+                                'time_track_type_slug',
                             ],
                         ],
                         'current_page',
@@ -167,7 +180,7 @@ class TimeTrackApiTest extends TestCase
         $this->assertEquals($datas2->data->total, 3);
 
         foreach ($datas2->data->data as $data) {
-            $this->assertEquals($user->id, $data->user_id);
+            $this->assertEquals($user->slug, $data->user_slug);
         }
     }
     public function test_get_time_tracks_pagination_check_by_user_id_unautorized()
@@ -192,8 +205,7 @@ class TimeTrackApiTest extends TestCase
     public function get_one_user_time_track_success()
     {
         $user = User::factory()
-            ->create()
-            ->first();
+            ->create();
 
         $timeTrack = TimeTrack::factory()
             ->state([
@@ -218,6 +230,9 @@ class TimeTrackApiTest extends TestCase
                         'time_from',
                         'time_to',
                         'description',
+                        'time_track_type_id',
+                        'time_track_type_name',
+                        'time_track_type_slug',
                     ],
                 ]
             );
@@ -226,8 +241,7 @@ class TimeTrackApiTest extends TestCase
     public function get_one_user_time_track_fail()
     {
         $user = User::factory()
-            ->create()
-            ->first();
+            ->create();
 
         $response =  $this->actingAs($user, 'api')->getJson('/api/TimeTrack/' . Str::random(10));
 
@@ -248,13 +262,14 @@ class TimeTrackApiTest extends TestCase
     public function get_foreign_one_user_time_track_success()
     {
         $user = User::factory()
-            ->count(2)
-            ->create()
-            ->first();
+            ->create();
+
+        $user2 = User::factory()
+            ->create();
 
         $timeTrack = TimeTrack::factory()
             ->state([
-                'user_id' => $user->id + 1,
+                'user_id' =>    $user2->id
             ])
             ->create()
             ->first();
@@ -278,15 +293,13 @@ class TimeTrackApiTest extends TestCase
     public function test_update_time_track()
     {
         $user = User::factory()
-            ->create()
-            ->first();
+            ->create();
 
         $timeTrack = TimeTrack::factory()
             ->state([
                 'user_id' => $user->id,
             ])
-            ->create()
-            ->first();
+            ->create();
 
         $timeTrackCheck = TimeTrack::where('slug', $timeTrack->slug)->where('user_id', $user->id)->first();
         $this->assertNotNull($timeTrackCheck);
@@ -294,7 +307,7 @@ class TimeTrackApiTest extends TestCase
 
         $timeTrackType = TimeTrackType::first();
 
-        $response =  $this->actingAs($user, 'api')->putJson('/api/TimeTrack/' .  $timeTrack->slug, [
+        $response =  $this->actingAs($user, 'api')->patchJson('/api/TimeTrack/' .  $timeTrack->slug, [
             'description' => 'test_description',
             'time_from' => '2021-09-11 12:45:19',
             'time_to' => '2021-09-11 12:55:39',
@@ -309,11 +322,16 @@ class TimeTrackApiTest extends TestCase
                 [
                     'code',
                     'data' => [
-                        'id',
                         'description',
                         'time_from',
                         'time_to',
-                        'user_id',
+                        'id',
+                        'slug',
+                        'user_name',
+                        'user_slug',
+                        'time_track_type_id',
+                        'time_track_type_name',
+                        'time_track_type_slug',
                     ]
                 ]
             );
@@ -323,20 +341,25 @@ class TimeTrackApiTest extends TestCase
 
         $data = json_decode($response->getContent());
 
-        $timeTrackCheck = TimeTrack::where('description',  $data->data->description)->where('user_id', $user->id)->first();
+        $timeTrackCheck = TimeTrack::where('description',  $data->data->description)
+            ->where('time_track_type_id', $timeTrackType->id)
+            ->where('user_id', $user->id)
+            ->where('time_to', '2021-09-11 12:55:39')
+            ->where('time_from', '2021-09-11 12:45:19')
+            ->first();
         $this->assertNotNull($timeTrackCheck);
     }
 
     public function test_update_foreign_time_track()
     {
         $user = User::factory()
-            ->count(2)
-            ->create()
-            ->first();
+            ->create();
+        $user2 = User::factory()
+            ->create();
 
         $timeTrack = TimeTrack::factory()
             ->state([
-                'user_id' => $user->id + 1,
+                'user_id' => $user2->id,
             ])
             ->create()
             ->first();
@@ -366,15 +389,13 @@ class TimeTrackApiTest extends TestCase
     public function test_update_time_track_unatorized()
     {
         $user = User::factory()
-            ->create()
-            ->first();
+            ->create();
 
         $timeTrack = TimeTrack::factory()
             ->state([
                 'user_id' => $user->id,
             ])
-            ->create()
-            ->first();
+            ->create();
 
         $timeTrackCheck = TimeTrack::where('slug', $timeTrack->slug)->where('user_id', $user->id)->first();
         $this->assertNotNull($timeTrackCheck);
@@ -395,6 +416,79 @@ class TimeTrackApiTest extends TestCase
                     'errors' => [
                         'message',
                     ],
+                ]
+            );
+    }
+
+    public function test_create_already_taken_time_error()
+    {
+        $user = User::factory()->create();
+        $timeTrackType = TimeTrackType::first();
+        $timeTrack = TimeTrack::factory()
+            ->state([
+                'user_id' => $user->id,
+                'time_from' => '2021-09-11 12:35:39',
+                'time_to' => '2021-09-11 12:58:39',
+            ])
+            ->create();
+
+        $response =  $this->actingAs($user, 'api')->postJson('/api/TimeTrack', [
+            'description' => 'test_description',
+            'time_from' => '2021-09-11 12:45:39',
+            'time_to' => '2021-09-11 12:55:39',
+            'time_track_type_id' => $timeTrackType->id,
+        ]);
+
+        $response
+            ->assertJson([
+                'code' => "422",
+            ])
+            ->assertJsonStructure(
+                [
+                    'code',
+                    'errors' => [
+                        'time_from',
+                        'time_to',
+                    ]
+                ]
+            );
+    }
+    public function test_update_already_taken_time_error()
+    {
+        $user = User::factory()->create();
+        $timeTrackType = TimeTrackType::first();
+        $timeTrack = TimeTrack::factory()
+            ->state([
+                'user_id' => $user->id,
+                'time_from' => '2021-09-11 12:35:39',
+                'time_to' => '2021-09-11 12:45:39',
+            ])
+            ->create();
+        $timeTrack2 = TimeTrack::factory()
+            ->state([
+                'user_id' => $user->id,
+                'time_from' => '2021-09-11 12:46:39',
+                'time_to' => '2021-09-11 12:58:39',
+            ])
+            ->create();
+
+        $response =  $this->actingAs($user, 'api')->putJson('/api/TimeTrack/' .  $timeTrack->slug, [
+            'description' => 'test_description',
+            'time_from' => '2021-09-11 12:35:19',
+            'time_to' => '2021-09-11 12:55:39',
+            'time_track_type_id' => $timeTrackType->id,
+        ]);
+
+        $response
+            ->assertJson([
+                'code' => "422",
+            ])
+            ->assertJsonStructure(
+                [
+                    'code',
+                    'errors' => [
+                        'time_to',
+                    ]
                 ]
             );
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\Auth\AuthApiController;
 use App\Http\Controllers\Api\v1\TimeTrack\TimeTrackApiController;
+use App\Http\Controllers\Api\v1\TimeTrack\TimeTrackTypeApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,13 @@ Route::prefix('auth')->group(function () {
 });
 Route::middleware(['auth:api'])->group(function () {
 
-    Route::get('/auth/user', [AuthApiController::class, 'authenticatedUserDetails']);
-
-    Route::apiResource('TimeTrack', TimeTrackApiController::class)->scoped([
+    Route::apiResource('TimeTrack', TimeTrackApiController::class)->parameters([
         'TimeTrack' => 'slug',
-    ]);
-    
+    ])
+        ->except(['edit', 'create']);
+
+    Route::apiResource('TimeTrackType', TimeTrackTypeApiController::class)->parameters([
+        'TimeTrackType' => 'slug',
+    ])
+        ->only(['index']);
 });

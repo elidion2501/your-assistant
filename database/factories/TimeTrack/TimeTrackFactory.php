@@ -6,6 +6,7 @@ use App\Models\Model;
 use App\Models\TimeTrack\TimeTrack;
 use App\Models\TimeTrack\TimeTrackType;
 use App\Models\User;
+use Closure;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TimeTrackFactory extends Factory
@@ -32,4 +33,6 @@ class TimeTrackFactory extends Factory
             'time_track_type_id' => TimeTrackType::inRandomOrder()->first()->id,
         ];
     }
+
+
 }

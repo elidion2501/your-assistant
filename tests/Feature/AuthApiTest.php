@@ -23,6 +23,7 @@ class AuthApiTest extends TestCase
         $response = $this->postJson('/api/auth/signUp', [
             'nickname' => 'test_name32',
             'password' => 'test_password',
+            'password_confirmation' => 'test_password',
             'email' => 'test@email.sk32',
         ]);
 
@@ -67,5 +68,33 @@ class AuthApiTest extends TestCase
                 'code' => "422",
             ])
             ->assertJsonValidationErrors(['email']);
+    }
+
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_login_success()
+    {
+        $user = User::factory()->create()->first();
+
+        $response = $this->postJson('/api/auth/login', [
+            'password' =>  'test1',
+            'email' =>  $user->email,
+        ]);
+
+        $response
+            ->assertJson([
+                'code' => "200",
+            ])
+            ->assertJsonStructure(
+                [
+                    'code',
+                    'data' => [
+                        'token',
+                    ]
+                ]
+            );
     }
 }

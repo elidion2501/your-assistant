@@ -18,21 +18,21 @@ endpoints:
     urlParameters:
       slug:
         name: slug
-        description: 'The ID of the post.'
+        description: 'The slug of Time Track.'
         required: true
-        example: '2333'
+        example: '2444'
         type: string
     queryParameters: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"id":1,"description":"Lizard''s slate-pencil, and the others took the thimble, looking as solemn as she could, for the baby, it was indeed: she was walking.","time_from":"2021-09-08T04:14:20.000000Z","time_to":"2021-09-19T01:16:10.000000Z","slug":"2333","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":7,"time_track_type_name":"Violet Armstrong DVM","time_track_type_slug":"violet-armstrong-dvm"}}'
+        content: '{"code":"200","data":{"id":2,"description":"Alice soon began talking to herself, ''if one only knew how to spell ''stupid,'' and that makes people hot-tempered,'' she went down on their slates, ''SHE doesn''t believe there''s an atom of meaning in it,''.","time_from":"2021-09-03T21:17:53.000000Z","time_to":"2021-09-14T05:17:51.000000Z","slug":"2444","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":3,"time_track_type_name":"Quinton Bogisich","time_track_type_slug":"quinton-bogisich"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -59,7 +59,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -99,12 +99,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"total":55,"current_page":1,"data":[{"id":9,"description":"Alice asked in a great crowd assembled about them--all sorts of things--I can''t remember things as I get it home?'' when it had.","time_from":"2021-09-10T08:55:06.000000Z","time_to":"2021-09-16T07:12:35.000000Z","slug":"2021-09-10-085506","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":1,"time_track_type_name":"Prof. Iliana Haag Jr.","time_track_type_slug":"prof-iliana-haag-jr"}]}}'
+        content: '{"code":"200","data":{"total":54,"current_page":1,"data":[{"id":9,"description":"Alice asked in a great crowd assembled about them--all sorts of things--I can''t remember things as I get it home?'' when it had.","time_from":"2021-09-10T08:55:06.000000Z","time_to":"2021-09-16T07:12:35.000000Z","slug":"2021-09-10-085506","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":1,"time_track_type_name":"Prof. Iliana Haag Jr.","time_track_type_slug":"prof-iliana-haag-jr"}]}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '59'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -127,7 +127,7 @@ endpoints:
         name: description
         description: 'Must be at least 5 characters. Must not be greater than 1500 characters.'
         required: false
-        example: arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw
+        example: cixbdtlgjsmrfebnbciehobrxriirvdpnljdfqqtbjxffawfqywdymqchrhkfpwooxnujurmbxaaeigkvcyeramablutnqstubpeesnuqiiatfazrlyoetwvkzoncppwavhuoewerzraudxgzexddvfeoikyckkcvzejqkffuorvuiqbymmvcqraadhzccdoxnxlsmzoshohmoxtwjllgvyisgwqrozwovntsngthxikpavxiylxrvnjztppbvmkoveoefslosvgpsokqieokzhdwgddunykyojfbemsglmxmljooafvonxzpwgvudqgmijfmghhalqbzeruazrvlk
         type: string
       time_from:
         name: time_from
@@ -150,12 +150,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"id":208,"description":"arlmmljzxwqcyypsumztbowroaxzrzifahptvglgmzfusbfbtenqbrtidhktrquzsxovjjzfwomogmlafkbmxibxzkvacrcliegwpzewbivcyebjbnlualvfoqvuypozfqmbtcjdjndremqhbvwiujlsjgreeztsxahksxphegefgtyezmfrryljloqddalqzvueoocudicfdwoggkcmaxyxygiethucvvhedndsupmhoidpvrkyfowlnnipfvsbjcvuvqaykbrthqlxlmmbhgglfakpuhcbizcojfeuqrhkslqlxplichxfmvomtliqgltvfmtuqsuubvdyyudptuyuaptpmlujnasskhsqoholshfcdfthdxpxmhkqozlmgwcikdwgojcqntkikfrqglmabvqjvdmtvcuajrjinvfduhczqdrekcgtvigfuftpqitspshrdtiuiyepllquvcekuabcspzutfrdfhaabctjyqxfoogredqhwsistdxlkjupbdvtqubxikrjplubhehljbbrzydtzfzswglhdxbeqsalgutownwohhlvsaoxbpxdissejpgpgaumhouzkuzbbvfrbrgcchojkntpuwnyfnhvpwpltvicvddidljobsiqiejbdggcafkltnalxidoizitcqtqtdpnxsictmcgmmhpcqakwlnkwrcaaovvjpewkxtppirzmcgxbksigifnrvqkrltesoipxzuopifripojqzuijgiuwcrgptdfibafnixlhnsgcryldbapplvsnucqakrxkgyslebaqubpkviqsfctkvadagbjgnxijykshkvlrlmkhmcmsgnubgjenmaugaslsdsvxzmqqakbpuvqsbzfydfxtiktifalxqdzicbukbzhkkgiljwpyrfahefuuynowhvbgpplxkkylfyxgxptyrstapznammlakgzrolppkeecxsdbnukgctpxhxvtiohrzdftfbinmbdlwcmovbfyrrsgmckniqsqryqyogzztjplmvwoqtgfknmclmatexfdrboptgdrlkybnkfcdzikevelnfhefenfnrilhpctomlpyyoogdyakvboiyihdzxfjnavjqfqmyfuifjohbtiadyjpzofkmecqtrrmistbrgiwarvhafwqokksphuyoxcahcvvejvispwytzyturjauakukxukyhdgtjrtirbnxreubrctcxbyedrbpjonassrlmetcudkoqvdmklrwgizybdttjlgdcdpzhsqckocmavxzbgifnbriulltycmcgxhfeboxophwycryrwcpugubwqzofsfqilbtgibbqgjggwyubbnhkxbtoeoidcpjueekvprzmgyqabyirojfonflngvvcwlgehucphiujhpeweyxraghw","time_from":"2021-09-25T15:10:38.000000Z","time_to":"2021-10-25T15:10:38.000000Z","slug":"2021-09-25-151038","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":3,"time_track_type_name":"Quinton Bogisich","time_track_type_slug":"quinton-bogisich"}}'
+        content: '{"code":"200","data":{"id":215,"description":"cixbdtlgjsmrfebnbciehobrxriirvdpnljdfqqtbjxffawfqywdymqchrhkfpwooxnujurmbxaaeigkvcyeramablutnqstubpeesnuqiiatfazrlyoetwvkzoncppwavhuoewerzraudxgzexddvfeoikyckkcvzejqkffuorvuiqbymmvcqraadhzccdoxnxlsmzoshohmoxtwjllgvyisgwqrozwovntsngthxikpavxiylxrvnjztppbvmkoveoefslosvgpsokqieokzhdwgddunykyojfbemsglmxmljooafvonxzpwgvudqgmijfmghhalqbzeruazrvlk","time_from":"2021-09-25T15:10:38.000000Z","time_to":"2021-10-25T15:10:38.000000Z","slug":"2021-09-25-151038","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":3,"time_track_type_name":"Quinton Bogisich","time_track_type_slug":"quinton-bogisich"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-remaining: '58'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -175,9 +175,9 @@ endpoints:
     urlParameters:
       slug:
         name: slug
-        description: 'The ID of the post.'
+        description: 'The slug of Time Track.'
         required: true
-        example: '2333'
+        example: '2444'
         type: string
     queryParameters: []
     bodyParameters:
@@ -185,7 +185,7 @@ endpoints:
         name: description
         description: 'Must be at least 5 characters. Must not be greater than 1500 characters.'
         required: false
-        example: sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh
+        example: tuhvhuqfjogsabgasxdatyfcmpxkeygnasqpmubeodtrwvmqsmfrhyinqownlfzkfzkkfkngxzfsfbcjpzycwzdhtubjjmcrdtggyzalvcnjqrmvwjwtdkoukrymmifqgmojxpbxvnhbjalvszibwnakzyxrmxaispuoqyctavteclfcwdfsvapssdykztstfudrenqaulthprtclgkilghwaioyfvuuonibpzhuezmmddykskraqhdgcsrrlorucvqymgqtwwgeribuvuapsxzusqidhpfrjxryakztofsxoogoipqhmxuqbwvghctmoifwvodmpunexnmievrcfikyzadbnvbldaxpybepenjywbzirvvkreqpjwwkfxgezxacwfvwzeznziiscdygupvbcotqcemtycamvunpjuujknxxmlwehqzkqeakjotvdzgqmaocpdkqirzsuwibzhxjqkxospybphvqnlqisjkjsfsynujgoclmjtnrgyrsqnlzktnbuilurrbpjetbbommvmpxgnupxssgkbcyuzjrooctemwebsibzmvhwvntjzuyemigdg
         type: string
       time_from:
         name: time_from
@@ -203,17 +203,17 @@ endpoints:
         name: time_track_type_id
         description: ''
         required: false
-        example: null
-        type: string
+        example: 7
+        type: integer
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"id":1,"description":"sfaxxblwtsjgjbhasydauwlmohfkjafvnxomaovobsjwjffnqbuolgcjhxqqzelxmhmrcdodvnfzlfnjcmtjuowmkmxmhgleqdzdyoukzsxzbxrgalolzbqvwglgdwhkwzjpuulppzulyasjwvfwmbqdeejchxxjvuwwfoxerlkxjshfrlqniwgsgbhikutnmgmudmaufumbuygkhmvdxnkidfqahsddjxpfwleqlazvccqrmzocxmnzfynbmzcphzmlhomlstgvrgqzibvtsnrvilanyhoojwlpfpvhttesbodcbyanpfdboknblgvoyrybnutqrdzmycafcohpsbvbwugbjcxwjpjmlloowvdwlifyiupbtepngagoefyjtnycimytxhkimhteelqtfqkeacwkkchoptpopcbqsrmcppehdqllqypcpvlmmrrtmhvmqvomrndtqqbdefifjlohssomouhepxluomdfujauglbdczxasflhvpziklwzxbxxqevqkjsdnmxymtfvkpwijbxonivwhzyjcqeoxqqxfmleqxjrizixcgqwgtjhuvcgkvzomsjshsqdzbpabtixlyesmqkuepxnpkmiomagdhsnrnsluleekscikvigxaisklseefpqxhypvtujjthvzffcbgpudkvfklpjiqkodktwzyoqjdzathorsvpzcwmliodqfawogvzzbkrfkirgacaitpnifsuhchvrccebjmtiwihjxhsupfyggpeodyhhlh","time_from":"2019-09-25T15:10:38.000000Z","time_to":"2019-10-25T15:10:38.000000Z","slug":"2019-09-25-151038","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":7,"time_track_type_name":"Violet Armstrong DVM","time_track_type_slug":"violet-armstrong-dvm"}}'
+        content: '{"code":"200","data":{"id":2,"description":"tuhvhuqfjogsabgasxdatyfcmpxkeygnasqpmubeodtrwvmqsmfrhyinqownlfzkfzkkfkngxzfsfbcjpzycwzdhtubjjmcrdtggyzalvcnjqrmvwjwtdkoukrymmifqgmojxpbxvnhbjalvszibwnakzyxrmxaispuoqyctavteclfcwdfsvapssdykztstfudrenqaulthprtclgkilghwaioyfvuuonibpzhuezmmddykskraqhdgcsrrlorucvqymgqtwwgeribuvuapsxzusqidhpfrjxryakztofsxoogoipqhmxuqbwvghctmoifwvodmpunexnmievrcfikyzadbnvbldaxpybepenjywbzirvvkreqpjwwkfxgezxacwfvwzeznziiscdygupvbcotqcemtycamvunpjuujknxxmlwehqzkqeakjotvdzgqmaocpdkqirzsuwibzhxjqkxospybphvqnlqisjkjsfsynujgoclmjtnrgyrsqnlzktnbuilurrbpjetbbommvmpxgnupxssgkbcyuzjrooctemwebsibzmvhwvntjzuyemigdg","time_from":"2019-09-25T15:10:38.000000Z","time_to":"2019-10-25T15:10:38.000000Z","slug":"2019-09-25-151038","user_slug":"dr-carter-frami","user_name":"Dr. Carter Frami","time_track_type_id":7,"time_track_type_name":"Violet Armstrong DVM","time_track_type_slug":"violet-armstrong-dvm"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -232,11 +232,22 @@ endpoints:
     urlParameters:
       slug:
         name: slug
-        description: ''
+        description: 'The slug of Time Track.'
         required: true
-        example: aliquid
+        example: '2444'
         type: string
     queryParameters: []
     bodyParameters: []
-    responses: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "code": "200",
+          "data": {
+          "message": "Successfully deleted"
+          }
+          }
+        headers: []
+        description: '200'
     responseFields: []

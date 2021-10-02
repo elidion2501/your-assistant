@@ -45,22 +45,22 @@ class Handler extends ExceptionHandler
         });
         $this->renderable(function (ValidationException $e) {
             $mainService = new MainService;
-            return response()->error($mainService->getErrorMessagges($e->validator->getMessageBag()), "422");
+            return response()->error($mainService->getErrorMessagges($e->validator->getMessageBag()),  (int)422);
         });
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
-            return response()->error(['message' => 'Nemáte na to povolenia.'], "403");
+            return response()->error(['message' => 'Nemáte na to povolenia.'],  (int)403);
         });
         $this->renderable(function (HttpException $e, $request) {
-            return response()->error(['message' => 'Nemáte na to povolenia.'], "403");
+            return response()->error(['message' => 'Nemáte na to povolenia.'],  (int)403);
         });
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->wantsJson()) {
-                return response()->error(['message' => 'Žiadne výsledky pre model.'], "404");
+                return response()->error(['message' => 'Žiadne výsledky pre model.'],  (int)404);
             }
         });
         $this->renderable(function (AuthenticationException  $e, $request) {
             if ($request->wantsJson()) {
-                return response()->error(['message' => 'Unauthenticated.'], "401");
+                return response()->error(['message' => 'Unauthenticated.'],  (int)401);
             }
         });
     }

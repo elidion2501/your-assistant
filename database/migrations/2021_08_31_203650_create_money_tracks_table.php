@@ -16,6 +16,7 @@ class CreateMoneyTracksTable extends Migration
         Schema::create('money_tracks', function (Blueprint $table) {
             $table->id();
             $table->mediumText('description')->nullable();
+            $table->string('title');
             $table->string('slug')->unique();
             $table->decimal('money', 14, 2);
             $table->unsignedBigInteger('money_track_type_id')->nullable();

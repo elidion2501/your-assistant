@@ -3,11 +3,17 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Api\v1\Auth\AuthApiController;
+use App\Models\MoneyTrack\MoneyTrack;
+use App\Models\MoneyTrack\MoneyTrackActionType;
+use App\Models\MoneyTrack\MoneyTrackType;
 use App\Models\TimeTrack\TimeTrack;
 use App\Models\TimeTrack\TimeTrackType;
 use App\Models\User;
-use App\Observers\TimeTrackObserver;
-use App\Observers\TimeTrackTypeObserver;
+use App\Observers\MoneyTrack\MoneyTrackActionTypeObserver;
+use App\Observers\MoneyTrack\MoneyTrackObserver;
+use App\Observers\MoneyTrack\MoneyTrackTypeObserver;
+use App\Observers\TimeTrack\TimeTrackObserver;
+use App\Observers\TimeTrack\TimeTrackTypeObserver;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
@@ -47,13 +53,13 @@ class AppServiceProvider extends ServiceProvider
 
         Response::macro('success', function ($data) {
             return response()->json([
-                'code' => "200",
+                'code' =>  (int)200,
                 'data' => $data,
             ]);
         });
         Response::macro('error', function ($error, $status_code) {
             return response()->json([
-                'code' => $status_code,
+                'code' =>  (int)$status_code,
                 'errors' => $error,
             ]);
         });
@@ -62,5 +68,8 @@ class AppServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         TimeTrackType::observe(TimeTrackTypeObserver::class);
         TimeTrack::observe(TimeTrackObserver::class);
+        MoneyTrack::observe(MoneyTrackObserver::class);
+        MoneyTrackType::observe(MoneyTrackTypeObserver::class);
+        MoneyTrackActionType::observe(MoneyTrackActionTypeObserver::class);
     }
 }

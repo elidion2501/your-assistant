@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 /**
  * 
  * @group Time Tracks
- * @tag slug="2021-08-25-191919"
  * 
  * @authenticated
  * 
@@ -81,7 +80,7 @@ class TimeTrackApiController extends Controller
      * GET show Time Track
      * 
      * 
-     * @urlParam slug string  required The ID of the post. Example:2333
+     * @urlParam slug string  required The slug of Time Track. Example:2444
      */
     public function show($slug)
     {
@@ -96,7 +95,7 @@ class TimeTrackApiController extends Controller
     /**
      * PUT/PATCH update Time Track
      * 
-     * @urlParam slug string  required The ID of the post. Example:2333
+     * @urlParam slug string  required The slug of Time Track. Example:2444
      * @bodyParam  time_from date required Time from Example: 2019-09-25 15:10:38
      * @bodyParam  time_to date required Time to. Example: 2019-10-25 15:10:38
      * 
@@ -112,11 +111,24 @@ class TimeTrackApiController extends Controller
     /**
      * DELETE delete TimeTrack
      * 
+     * @response {
+    "code": "200",
+    "data": {
+        "message": "Successfully deleted"
+    }
+}
+     * @urlParam slug string  required The slug of Time Track. Example:2444
      * 
      */
     public function destroy($slug)
     {
-        //
+        $timeTrack = TimeTrack::where('slug', $slug)
+            ->where('user_id', auth()->user()->id)
+            ->firstOrFail();
+
+        $timeTrack->delete();
+
+        return response()->success(['message' => 'Successfully deleted']);
     }
 
     function checkRequest($request)

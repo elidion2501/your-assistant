@@ -15,6 +15,7 @@ class MoneyTrack extends Model
     protected $fillable = [
         'user_id',
         'description',
+        'title',
         'slug',
         'money_track_type_id',
         'money_track_action_type_id',

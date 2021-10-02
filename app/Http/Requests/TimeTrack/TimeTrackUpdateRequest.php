@@ -29,7 +29,7 @@ class TimeTrackUpdateRequest extends FormRequest
             'description' => 'nullable|string|min:5|max:1500',
             'time_from' => 'nullable|required_with:time_to|date|date_format:Y-m-d H:i:s',
             'time_to' => 'nullable|required_with:time_from|date|date_format:Y-m-d H:i:s|after:time_from',
-            'time_track_type_id' => 'nullable|exists:time_track_types,id'
+            'time_track_type_id' => 'nullable|integer|exists:time_track_types,id'
         ];
     }
     /**

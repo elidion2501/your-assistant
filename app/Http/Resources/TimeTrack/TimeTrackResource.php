@@ -20,11 +20,22 @@ class TimeTrackResource extends JsonResource
             'time_from'  => $this->time_from,
             'time_to'  => $this->time_to,
             'slug'  => $this->slug,
-            'user_slug' => $this->whenLoaded('user')->slug,
-            'user_name' => $this->whenLoaded('user')->nickname,
-            'time_track_type_id' => $this->whenLoaded('timeTrackType')->id,
-            'time_track_type_name' => $this->whenLoaded('timeTrackType')->type_name,
-            'time_track_type_slug' => $this->whenLoaded('timeTrackType')->slug,
+            'user_slug' => $this->whenLoaded('user', function () {
+                return $this->user->slug;
+            }),
+            'user_name' => $this->whenLoaded('user', function () {
+                return $this->user->nickname;
+            }),
+            'time_track_type_id' => $this->whenLoaded('timeTrackType', function () {
+                return $this->timeTrackType->id;
+            }),
+            'time_track_type_name' => $this->whenLoaded('timeTrackType', function () {
+                return $this->timeTrackType->type_name;
+            }),
+            'time_track_type_slug' => $this->whenLoaded('timeTrackType', function () {
+                return $this->timeTrackType->slug;
+            }),
+
         ];
     }
 }

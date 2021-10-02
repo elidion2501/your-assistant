@@ -202,7 +202,7 @@ class TimeTrackApiTest extends TestCase
             );
     }
 
-    public function get_one_user_time_track_success()
+    public function test_get_one_user_time_track_success()
     {
         $user = User::factory()
             ->create();
@@ -211,8 +211,8 @@ class TimeTrackApiTest extends TestCase
             ->state([
                 'user_id' => $user->id,
             ])
-            ->create()
-            ->first();
+            ->create();
+
         $response =  $this->actingAs($user, 'api')->getJson('/api/TimeTrack/' . $timeTrack->slug);
 
         $response
@@ -238,7 +238,7 @@ class TimeTrackApiTest extends TestCase
             );
     }
 
-    public function get_one_user_time_track_fail()
+    public function test_get_one_user_time_track_fail()
     {
         $user = User::factory()
             ->create();
@@ -259,7 +259,7 @@ class TimeTrackApiTest extends TestCase
             );
     }
 
-    public function get_foreign_one_user_time_track_success()
+    public function test_get_foreign_one_user_time_track_fail()
     {
         $user = User::factory()
             ->create();

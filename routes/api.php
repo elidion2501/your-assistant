@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Auth\AuthApiController;
+use App\Http\Controllers\Api\v1\MoneyTrack\MoneyTrackApiController;
 use App\Http\Controllers\Api\v1\TimeTrack\TimeTrackApiController;
 use App\Http\Controllers\Api\v1\TimeTrack\TimeTrackTypeApiController;
 use Illuminate\Http\Request;
@@ -33,4 +34,9 @@ Route::middleware(['auth:api'])->group(function () {
         'TimeTrackType' => 'slug',
     ])
         ->only(['index']);
+
+    Route::apiResource('MoneyTrack', MoneyTrackApiController::class)->parameters([
+        'MoneyTrack' => 'slug',
+    ])
+        ->except(['edit', 'create']);
 });

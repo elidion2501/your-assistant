@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\MoneyTrack\MoneyTrack;
 use App\Models\TimeTrack\TimeTrack;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,5 +47,9 @@ class User extends Authenticatable
     public function timeTracks()
     {
         return $this->hasMany(TimeTrack::class);
+    }
+    public function moneyTracks()
+    {
+        return $this->hasMany(MoneyTrack::class);
     }
 }

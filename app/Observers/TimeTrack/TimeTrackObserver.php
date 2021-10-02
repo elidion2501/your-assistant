@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Observers\TimeTrack;
 
 use App\Models\TimeTrack\TimeTrack;
 use App\Services\MainService;

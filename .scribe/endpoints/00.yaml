@@ -19,7 +19,7 @@ endpoints:
         name: nickname
         description: ''
         required: true
-        example: et
+        example: suscipit
         type: string
       email:
         name: email
@@ -42,12 +42,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJiOTYwYzdmNGQ4YjE2MmNmNzNlOGU1MjEyZDNlOGE2Y2MzM2I3MTcwZDQzOGEwN2MwOWNlNWU2YTVmMzM0ODk0ZmRkMzc5N2QyZjVhNzIwYSIsImlhdCI6MTYzMjY3NzQzMC4wNTE2NjgsIm5iZiI6MTYzMjY3NzQzMC4wNTE2NzIsImV4cCI6MTY0ODMxNTgyOS44NDQyNjIsInN1YiI6IjkiLCJzY29wZXMiOltdfQ.ibWisRgacRs4L3Nt8GGoeAmhgv46NvPwuCQppBw4n1cHwR4sWXfTJfE9tjzRa9phgCXsYd7htmdLNMEnn3IjMrF1imwCiUHIQJRcNarp2H2pbgoZPX1jBtBA87ROjsTuTUysyCKM8NEKyWGKX10SjICkTB8LRFKroA1r4dCgVjEFZXWW6sX4HzFw-H0fNt0rd4FX0frZC4fCxX0RDSjYuBjSuOadGAibCMUk1iR51MShoYjXtLUvCfjC9kLZ60D6lIpBKaAA6FLroNKUr201ey0d3NvFEkXIS_QYWTzPgaDKKE88X5sWh6vc4gtpOttFdGKuF1XrOa5WRwpbdLnJDwj2IDmC3tLBpUY-en3Ch-MPKTSwhwrnPp-EbHsCgEGOhuD0gn4LyBwfvpGN6JuP7TG7wkA8c2KsY4HDORbj7wwIZXNKbKyGb6QUapnRY7EuB4vMSRGDNutS41bde_RYKGnixqZEcFDmzlPquPVZcq1lPR1wfmrpQx5saNLHAazAlS935pAz82aqYSMBww4i0FFV54JoRyJvrwn9W0-R7xb8NuOPpvpAABoCVy_jrMMC3bQh_jJP_nUIPXUkJaOeVlQQD5iKYo9xxTnnw7P0Cg8J9XtNb-jemtIlWKkL8lx7eFUTDFDLHwXrlV4S7DlGB6r2BvMeXMg5VgKngQrGpEU"}}'
+        content: '{"code":"200","data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJkMmQ3ZTk1MWY3OTg0OTMzNzE5ODYxMWI3OTA2MWVjMjM3Nzk1OTc1MGM1YmUwZGMxNjYxMGNiN2RjN2FkN2MyZWZkZDE4YTVmYTk3NDJjMyIsImlhdCI6MTYzMjY3ODMzMC4xNjM0NywibmJmIjoxNjMyNjc4MzMwLjE2MzQ3MywiZXhwIjoxNjQ4MzE2NzI5LjkyMjQzNSwic3ViIjoiMTYiLCJzY29wZXMiOltdfQ.H4-CYkpUsKQSUXdOceK8dalzxK_bCTLmISkfwoaCVDf5jQd3PvEjFDHsXcU31nWmaGumVwzB4h1FuI_GWAM94D1yJRoAbu04sXcedKYNA0kypPaUtAX-i5tNTPEDTy7W63mIUpptiCcE0Hrp1LVC9F3oIgoA5tyZr-GXi61VvnL6AvQwlmybl4vIgIy7OrzBckAFdED_omZob0QNP7MjwXPI3SNrO-25hhO0USAsU5oV2RDLjaXIQscdoHCs8zoqZYbLbQjuV7PJqSsKNVBQjAMY9kGQdcEn2QEt2BvHgjPQRfLhAuaIWfWIPPho8UKOlD0L46kLwu_EkjTqUiawoHCGNRJfm-Ve5_bqEMZCzJku9CI_IHHbksVqS715neNwqF8MimFoEHdRJXo2Ml01nrMiC4-oMhU7mZcdl8z0S9YP15z-h24mzjTicuw8Tt-u80Lic3VG8BR4A7Pw2IvUjygDteAQ6D1X9ulSVzu_9RPm3mEU5iz2npYvWmRibRfB_Ba7vehWydaa1kvRQU9kFU9pMEhx4EL1ZiZCbf3UHlPTY42H7qaMM34JmA6GLCACSCTzMsaDAWw49ZFmCeRrHy9jhhQHfFgfpn7CYokOWI8aki6TyIU_H-5HHqc-_0AnMMvSUNTsWLk48r4MInHaS6e1ro_zQBb8ZMA59Rk3srU"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
+          x-ratelimit-remaining: '59'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -80,12 +80,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"code":"200","data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiJlYTdhYWI1MmMyZmM3Yzc2NWE4OWRkMDkwYjFiZjY0MDc1ZjNkOTJiNDhjMGZlMzdiYmMyZWYwMmJmZmM4NDlmMDIwMWJjMjBlYzNjYTlmZSIsImlhdCI6MTYzMjY3NzQzMC4yMjc1MTksIm5iZiI6MTYzMjY3NzQzMC4yMjc1MjEsImV4cCI6MTY0ODMxNTgzMC4wMjA1NzYsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.i6PuZcHpVE9rplC1Pxr84M7kN1oXdheBn_ScHUQL9T9SqxwkqpG1AmB1qz2n5oEH7Ubwzf_koHlUba9UGFT7r0Qs8P9UgRkL3Tx80CMiLX6irOYBCKpxouqD_30qDdZurxM_IOAh0jcEBxGBRpiEROO5ah_qfGnnS711n_xDXRgcqPDMIt4LeSOkkUZDbxOIRxyIcf8M3lMQvQL1jfVOGJLMJUGgTIXuWzCdsm11Am-APTNKKMfp_QWZj0VVwBdbc19P5H61GW7amhShjz0SjOwPqp77zO-_Y_RwexPEXYFNEbhdLi5ZWa93yya03MsU8lfP9T29uEIM3kLoyzKs3ZAX7vl-lbleIzX3uhdIVl3r7F637XibX-fH2MUyIY0KzPZ6mLByOzei6YcvdQ_tnyXdr_sLByTBT_UhKyUquvcOIn7eQFcF-ME_eSmFiGTAM1fs8YR_c995L71JSs8nNfQsZFlscqt26qwAHT6xfA-ocNRXSayFbU14oLUXNQ1m6q9xstBoaIU_oBcJkVpXT85vvUDwWvldmAO2T1jo7l944aY1PHgWguUOAnETPED-frxePPpizkm6BiGw1rLmvS-6hWFA33fmU-IMTinZ9Okg_tOvj1Fh1t_XDLDylvfszBxOe5jy1fL2O-I0DQ1KLMV05JRgGM1zjikflIiaHis"}}'
+        content: '{"code":"200","data":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NDdiMjRiMC1jYjBjLTRmNzctOTNkZC1iNGQwOWQ2ZTQzNTYiLCJqdGkiOiI2YmU0MGUwZDRkMzQ4MTc3MDBjNGU1NjQyZDM2MGNjOGYyMmUwMjNjYmQzOWM4YWQ0NzEyMTA5ODAwMDFlY2NjNGI1OTI1MjMyOTM3ZjA4NSIsImlhdCI6MTYzMjY3ODMzMC4yODU3MDMsIm5iZiI6MTYzMjY3ODMzMC4yODU3MDYsImV4cCI6MTY0ODMxNjczMC4wNDQ0ODMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.T3jdnz5i9TzYsAGa0MWAOEECXj_Zgv-kXtvzKOuwgaBlDcNs1IIws0W6EJhfm0DAQikAOGcyzzTxQ79wVGuYbdfiI3Tna-mYIyHLscHHrisgr0THGFmAsK5Fd0kqVmIH5Mavo7ZZYVX7lOg5S1JEMD7FSJKGkqeOmfxfv6py3PTHQ_qzOgzYr6EQkRh2RBueEJ_VVUZ4GaIiVCig8oqBwY70VcuB_sbQgzVURyzPkK6kLm4sOv2aGt3x1t0LWBxBHOVr2ZeR2bxYHW0HGSsJ8hiLkDG5wVk322JA5Qbc1o6Fxxsw2k1VXfWXEtJ3RIZoxUQcwfBKTzJpQQpXRSMnIEy6Zljk1JuCKhFDZpNVWKeA9xFhurqX0tbCL7fb7U53IwqfVzfJqyjByRafs_06BLN2-CFDcRfytMMX2PZsCeyJgw4e2UKB6wbweihGaGXo7iCkWcZDmwYE2n8xvyrgClWiwLnCQSKQfrHOQgrbp6-KOf1ay-4c9SvrzFxeHjjIffB0GhNFTiAOCqBOeEW25-km5n5fV-PQWHI2ibN1OdLajPDhAqi-5i8g32Vd6HsqejP6QmaZU5Caid4-kd90HWk8nHM_keN11y893DaIyJv_Z0S6x3NNlFZ4ur3N00Q7pPakwsD3HPtwhJDLZSiaGMKM5eVGLu-rOGUakgKX5s0"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '58'
           access-control-allow-origin: '*'
         description: null
     responseFields: []

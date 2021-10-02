@@ -20,6 +20,7 @@ class TimeTrackShowResource extends JsonResource
             'time_from'  => $this->time_from,
             'time_to'  => $this->time_to,
             'slug'  => $this->slug,
+            'user_id' => $this->user_id,
             'user_slug' => $this->whenLoaded('user', function () {
                 return $this->user->slug;
             }),
